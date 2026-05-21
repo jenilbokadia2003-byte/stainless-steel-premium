@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAULT — Premium Stainless Steel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+–steel: #b8bfc9;
+–steel-light: #dde2e9;
+–steel-dark: #7a8291;
+–obsidian: #0d0e10;
+–carbon: #161719;
+–graphite: #222428;
+–chalk: #f0ede8;
+–gold: #c9a96e;
+–gold-light: #e8d5a8;
+–crimson: #c0392b;
+–ice: #e8f4f8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–obsidian);
+color: var(–chalk);
+font-family: ‘Barlow Condensed’, sans-serif;
+overflow-x: hidden;
+cursor: none;
+}
+
+/* CUSTOM CURSOR */
+.cursor {
+position: fixed; width: 12px; height: 12px;
+background: var(–gold); border-radius: 50%;
+pointer-events: none; z-index: 9999;
+transform: translate(-50%, -50%);
+transition: transform 0.1s ease, width 0.2s, height 0.2s, background 0.2s;
+mix-blend-mode: difference;
+}
+.cursor-ring {
+position: fixed; width: 36px; height: 36px;
+border: 1px solid var(–gold); border-radius: 50%;
+pointer-events: none; z-index: 9998;
+transform: translate(-50%, -50%);
+transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+opacity: 0.5;
+}
+body:hover .cursor { opacity: 1; }
+
+/* NOISE OVERLAY */
+body::before {
+content: ‘’;
+position: fixed; inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none; z-index: 1000; opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+display: flex; align-items: center; justify-content: space-between;
+padding: 28px 60px;
+background: linear-gradient(to bottom, rgba(13,14,16,0.95) 0%, transparent 100%);
+}
+.nav-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 2rem; font-weight: 300; letter-spacing: 0.3em;
+color: var(–chalk); text-decoration: none;
+position: relative;
+}
+.nav-logo span { color: var(–gold); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+color: var(–steel-light); text-decoration: none;
+font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 500;
+transition: color 0.3s;
+position: relative;
+}
+.nav-links a::after {
+content: ‘’; position: absolute; bottom: -3px; left: 0; right: 0;
+height: 1px; background: var(–gold);
+transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(–gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+background: transparent; border: 1px solid var(–gold);
+color: var(–gold); padding: 10px 28px;
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 600; cursor: none;
+transition: background 0.3s, color 0.3s;
+}
+.nav-cta:hover { background: var(–gold); color: var(–obsidian); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh; position: relative;
+display: grid; grid-template-columns: 1fr 1fr;
+align-items: center; overflow: hidden;
+}
+.hero-bg {
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 80% 80% at 70% 50%, #1e2128 0%, var(–obsidian) 70%);
+}
+.hero-grid-lines {
+position: absolute; inset: 0; pointer-events: none;
+background-image:
+linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
+background-size: 60px 60px;
+}
+.hero-content {
+position: relative; z-index: 2;
+padding: 120px 60px 80px 60px;
+}
+.hero-eyebrow {
+font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+color: var(–gold); font-weight: 500; margin-bottom: 24px;
+display: flex; align-items: center; gap: 16px;
+animation: fadeUp 1s ease 0.2s both;
+}
+.hero-eyebrow::before {
+content: ‘’; display: block; width: 40px; height: 1px; background: var(–gold);
+}
+.hero-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(4rem, 7vw, 7rem);
+font-weight: 300; line-height: 0.92;
+color: var(–chalk); margin-bottom: 32px;
+animation: fadeUp 1s ease 0.4s both;
+}
+.hero-title em { font-style: italic; color: var(–steel-light); }
+.hero-title .accent { color: var(–gold); }
+.hero-desc {
+font-size: 1rem; line-height: 1.7; color: var(–steel);
+max-width: 420px; margin-bottom: 48px;
+font-weight: 300; letter-spacing: 0.03em;
+animation: fadeUp 1s ease 0.6s both;
+}
+.hero-actions {
+display: flex; gap: 20px; align-items: center;
+animation: fadeUp 1s ease 0.8s both;
+}
+.btn-primary {
+background: var(–gold); color: var(–obsidian);
+padding: 16px 44px; font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 700; border: none; cursor: none;
+transition: background 0.3s, transform 0.2s;
+position: relative; overflow: hidden;
+}
+.btn-primary::after {
+content: ‘’; position: absolute; inset: 0;
+background: rgba(255,255,255,0.15);
+transform: translateX(-100%);
+transition: transform 0.4s;
+}
+.btn-primary:hover::after { transform: translateX(0); }
+.btn-secondary {
+color: var(–steel-light); font-size: 0.8rem;
+letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 500; display: flex; align-items: center; gap: 10px;
+cursor: none; transition: color 0.3s;
+text-decoration: none;
+}
+.btn-secondary:hover { color: var(–gold); }
+.btn-secondary .arrow {
+width: 30px; height: 1px; background: currentColor;
+position: relative; transition: width 0.3s;
+}
+.btn-secondary:hover .arrow { width: 44px; }
+.btn-secondary .arrow::after {
+content: ‘’; position: absolute; right: 0; top: -3px;
+width: 6px; height: 6px;
+border-right: 1px solid currentColor; border-top: 1px solid currentColor;
+transform: rotate(45deg);
+}
+
+/* HERO BOTTLE VISUAL */
+.hero-visual {
+position: relative; z-index: 2;
+display: flex; align-items: center; justify-content: center;
+padding-top: 80px; height: 100vh;
+}
+.bottle-scene {
+position: relative; width: 320px; height: 600px;
+animation: floatBottle 6s ease-in-out infinite;
+}
+.bottle-svg {
+width: 100%; height: 100%; filter: drop-shadow(0 40px 80px rgba(0,0,0,0.8));
+animation: fadeIn 1.5s ease 0.5s both;
+}
+.bottle-glow {
+position: absolute; inset: -60px;
+background: radial-gradient(ellipse at center, rgba(201,169,110,0.12) 0%, transparent 70%);
+animation: pulseGlow 4s ease-in-out infinite;
+}
+.hero-stats {
+position: absolute; left: -80px; bottom: 120px;
+display: flex; flex-direction: column; gap: 24px;
+animation: fadeUp 1s ease 1s both;
+}
+.stat {
+display: flex; flex-direction: column;
+border-left: 1px solid var(–gold); padding-left: 16px;
+}
+.stat-number {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 2rem; font-weight: 300; color: var(–chalk); line-height: 1;
+}
+.stat-label {
+font-size: 0.65rem; letter-spacing: 0.2em;
+color: var(–steel); text-transform: uppercase; margin-top: 4px;
+}
+.badge {
+position: absolute; right: -40px; top: 100px;
+width: 90px; height: 90px;
+border: 1px solid var(–gold); border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+animation: rotateBadge 20s linear infinite;
+}
+.badge-text {
+font-size: 0.55rem; letter-spacing: 0.15em;
+text-transform: uppercase; color: var(–gold);
+text-align: center; line-height: 1.5;
+}
+
+/* ── MARQUEE ── */
+.marquee-section {
+background: var(–gold); padding: 18px 0; overflow: hidden;
+position: relative; z-index: 10;
+}
+.marquee-track {
+display: flex; gap: 0; width: max-content;
+animation: marquee 20s linear infinite;
+}
+.marquee-item {
+font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+font-weight: 700; color: var(–obsidian);
+padding: 0 40px; white-space: nowrap;
+display: flex; align-items: center; gap: 16px;
+}
+.marquee-item::after { content: ‘◆’; font-size: 0.5rem; }
+
+/* ── FEATURES ── */
+.features {
+padding: 120px 60px;
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 80px; align-items: center;
+position: relative;
+}
+.features::before {
+content: ‘01’;
+position: absolute; top: 80px; right: 80px;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 12rem; font-weight: 300;
+color: rgba(255,255,255,0.025);
+line-height: 1; pointer-events: none;
+}
+.features-text { position: relative; }
+.section-tag {
+font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+color: var(–gold); font-weight: 500; margin-bottom: 20px;
+display: flex; align-items: center; gap: 12px;
+}
+.section-tag::before {
+content: ‘’; display: block; width: 30px; height: 1px; background: var(–gold);
+}
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300;
+line-height: 1.1; margin-bottom: 28px;
+color: var(–chalk);
+}
+.section-title em { font-style: italic; color: var(–steel-light); }
+.section-body {
+font-size: 0.95rem; line-height: 1.8; color: var(–steel);
+font-weight: 300; margin-bottom: 48px;
+max-width: 480px;
+}
+.feature-list { display: flex; flex-direction: column; gap: 20px; }
+.feature-item {
+display: flex; gap: 20px; align-items: flex-start;
+padding: 20px; background: rgba(255,255,255,0.02);
+border: 1px solid rgba(255,255,255,0.05);
+transition: border-color 0.3s, background 0.3s;
+}
+.feature-item:hover {
+border-color: rgba(201,169,110,0.3);
+background: rgba(201,169,110,0.04);
+}
+.feature-icon {
+width: 44px; height: 44px; flex-shrink: 0;
+border: 1px solid var(–gold); display: flex;
+align-items: center; justify-content: center;
+color: var(–gold); font-size: 1.2rem;
+}
+.feature-copy h4 {
+font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+font-weight: 600; color: var(–chalk); margin-bottom: 6px;
+}
+.feature-copy p {
+font-size: 0.85rem; color: var(–steel); line-height: 1.6; font-weight: 300;
+}
+
+/* FEATURES VISUAL SIDE */
+.features-visual {
+position: relative; display: flex; justify-content: center;
+}
+.cross-section {
+width: 100%; max-width: 380px; aspect-ratio: 0.6;
+position: relative;
+}
+.cross-section svg { width: 100%; height: 100%; }
+
+/* ── PRODUCTS ── */
+.products {
+padding: 120px 60px;
+background: var(–carbon);
+position: relative; overflow: hidden;
+}
+.products::before {
+content: ‘’;
+position: absolute; top: 0; left: 0; right: 0; height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+.products-header {
+display: flex; align-items: flex-end;
+justify-content: space-between; margin-bottom: 64px;
+}
+.products-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+.product-card {
+background: var(–graphite); position: relative;
+overflow: hidden; cursor: none;
+transition: transform 0.4s;
+}
+.product-card:hover { transform: translateY(-8px); z-index: 2; }
+.product-card:hover .product-overlay { opacity: 1; }
+.product-card:hover .product-img-wrap img { transform: scale(1.08); }
+.product-img-wrap {
+aspect-ratio: 0.7; overflow: hidden;
+background: linear-gradient(135deg, #1a1c20 0%, #252830 100%);
+display: flex; align-items: center; justify-content: center; position: relative;
+}
+.product-img-wrap svg { width: 55%; height: 55%; transition: transform 0.6s ease; }
+.product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.product-badge-tag {
+position: absolute; top: 20px; left: 20px;
+background: var(–gold); color: var(–obsidian);
+font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 700; padding: 5px 10px;
+}
+.product-overlay {
+position: absolute; inset: 0;
+background: linear-gradient(to top, rgba(13,14,16,0.9) 0%, transparent 50%);
+opacity: 0; transition: opacity 0.4s;
+display: flex; align-items: flex-end; padding: 24px;
+}
+.product-overlay-btn {
+background: var(–gold); color: var(–obsidian);
+padding: 10px 24px; font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+font-weight: 700; border: none; cursor: none; width: 100%;
+}
+.product-info { padding: 24px; }
+.product-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.4rem; font-weight: 400; color: var(–chalk);
+margin-bottom: 6px;
+}
+.product-sub {
+font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+color: var(–steel); font-weight: 400; margin-bottom: 16px;
+}
+.product-footer {
+display: flex; align-items: center; justify-content: space-between;
+}
+.product-price {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.6rem; font-weight: 300; color: var(–gold);
+}
+.product-rating { display: flex; gap: 3px; color: var(–gold); font-size: 0.7rem; }
+.color-dots { display: flex; gap: 6px; margin-top: 12px; }
+.color-dot {
+width: 12px; height: 12px; border-radius: 50%;
+border: 1px solid rgba(255,255,255,0.2);
+transition: transform 0.2s; cursor: none;
+}
+.color-dot:hover { transform: scale(1.3); }
+
+/* ── TECH SECTION ── */
+.tech {
+padding: 120px 60px;
+display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+align-items: center;
+}
+.tech-visual {
+position: relative; display: flex; justify-content: center; align-items: center;
+}
+.tech-ring {
+width: 380px; height: 380px; border-radius: 50%;
+border: 1px solid rgba(201,169,110,0.2);
+position: relative; display: flex; align-items: center; justify-content: center;
+animation: rotateSlow 30s linear infinite;
+}
+.tech-ring::before {
+content: ‘’; position: absolute;
+width: 280px; height: 280px; border-radius: 50%;
+border: 1px solid rgba(201,169,110,0.1);
+}
+.tech-ring-dot {
+position: absolute; width: 8px; height: 8px;
+background: var(–gold); border-radius: 50%;
+top: -4px; left: calc(50% - 4px);
+box-shadow: 0 0 12px var(–gold);
+}
+.tech-center {
+position: absolute; text-align: center;
+animation: rotateSlow 30s linear infinite reverse;
+}
+.tech-center-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 5rem; font-weight: 300; color: var(–chalk); line-height: 1;
+}
+.tech-center-label {
+font-size: 0.65rem; letter-spacing: 0.3em;
+color: var(–gold); text-transform: uppercase;
+}
+.tech-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+.tech-spec {
+background: rgba(255,255,255,0.02);
+border: 1px solid rgba(255,255,255,0.05);
+padding: 20px;
+}
+.spec-value {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.8rem; font-weight: 300; color: var(–gold); line-height: 1;
+}
+.spec-key {
+font-size: 0.65rem; letter-spacing: 0.15em;
+color: var(–steel); text-transform: uppercase; margin-top: 6px;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+padding: 120px 60px;
+background: var(–carbon); position: relative;
+overflow: hidden;
+}
+.testimonials::before {
+content: ‘’;
+position: absolute; top: 0; left: 0; right: 0; height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+.testimonials-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+margin-top: 64px;
+}
+.testimonial-card {
+background: var(–graphite); padding: 40px; position: relative;
+border-bottom: 2px solid transparent;
+transition: border-color 0.3s;
+}
+.testimonial-card:hover { border-color: var(–gold); }
+.quote-mark {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 6rem; font-weight: 300;
+color: var(–gold); opacity: 0.3; line-height: 0.6;
+margin-bottom: 20px;
+}
+.testimonial-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.15rem; font-style: italic; font-weight: 300;
+color: var(–chalk); line-height: 1.7; margin-bottom: 32px;
+}
+.testimonial-author { display: flex; align-items: center; gap: 16px; }
+.author-avatar {
+width: 44px; height: 44px; border-radius: 50%;
+background: linear-gradient(135deg, var(–steel-dark), var(–steel));
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.1rem; color: var(–obsidian); font-weight: 600;
+}
+.author-info .name {
+font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+text-transform: uppercase; color: var(–chalk);
+}
+.author-info .detail {
+font-size: 0.7rem; color: var(–steel); margin-top: 3px;
+}
+.stars { color: var(–gold); font-size: 0.75rem; margin-bottom: 16px; }
+
+/* ── SUSTAINABILITY ── */
+.sustainability {
+padding: 140px 60px; text-align: center; position: relative; overflow: hidden;
+}
+.sustainability-bg {
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(40,60,40,0.15) 0%, transparent 70%);
+}
+.sustainability .section-tag { justify-content: center; }
+.sustainability .section-title {
+font-size: clamp(2.5rem, 5vw, 5rem);
+max-width: 800px; margin: 0 auto 28px;
+}
+.sustainability .section-body { margin: 0 auto 64px; }
+.impact-grid {
+display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+max-width: 960px; margin: 0 auto;
+}
+.impact-item {
+padding: 40px 24px; background: rgba(255,255,255,0.02);
+border: 1px solid rgba(255,255,255,0.05);
+}
+.impact-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 3rem; font-weight: 300; color: var(–gold); line-height: 1;
+}
+.impact-label {
+font-size: 0.7rem; letter-spacing: 0.15em;
+color: var(–steel); text-transform: uppercase; margin-top: 10px; line-height: 1.5;
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+padding: 100px 60px;
+background: var(–gold);
+display: grid; grid-template-columns: 1fr auto;
+align-items: center; gap: 60px;
+position: relative; overflow: hidden;
+}
+.cta-band::before {
+content: ‘VAULT’;
+position: absolute; right: -40px; top: 50%;
+transform: translateY(-50%);
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20rem; font-weight: 300;
+color: rgba(0,0,0,0.07); line-height: 1;
+pointer-events: none; letter-spacing: -0.05em;
+}
+.cta-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(2rem, 4vw, 4rem); font-weight: 300;
+color: var(–obsidian); line-height: 1.1;
+}
+.cta-title em { font-style: italic; }
+.btn-dark {
+background: var(–obsidian); color: var(–gold);
+padding: 20px 52px; font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase;
+font-weight: 700; border: none; cursor: none; white-space: nowrap;
+transition: background 0.3s;
+}
+.btn-dark:hover { background: var(–graphite); }
+
+/* ── FOOTER ── */
+footer {
+background: var(–carbon); padding: 80px 60px 40px;
+border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-top {
+display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 60px; margin-bottom: 60px;
+}
+.footer-brand .brand-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 2rem; font-weight: 300; letter-spacing: 0.3em;
+color: var(–chalk); margin-bottom: 16px;
+}
+.footer-brand .brand-name span { color: var(–gold); }
+.footer-brand p {
+font-size: 0.85rem; color: var(–steel); line-height: 1.7;
+font-weight: 300; max-width: 300px;
+}
+.footer-col h5 {
+font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+color: var(–gold); font-weight: 600; margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a {
+font-size: 0.85rem; color: var(–steel); text-decoration: none;
+font-weight: 300; transition: color 0.3s;
+}
+.footer-col a:hover { color: var(–chalk); }
+.footer-bottom {
+display: flex; justify-content: space-between; align-items: center;
+padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-copy { font-size: 0.75rem; color: var(–steel-dark); letter-spacing: 0.05em; }
+.footer-socials { display: flex; gap: 20px; }
+.footer-socials a {
+width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1);
+display: flex; align-items: center; justify-content: center;
+color: var(–steel); font-size: 0.75rem; text-decoration: none;
+transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(–gold); color: var(–gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes floatBottle {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+33% { transform: translateY(-18px) rotate(0.5deg); }
+66% { transform: translateY(-8px) rotate(-0.5deg); }
+}
+@keyframes pulseGlow {
+0%, 100% { opacity: 0.6; transform: scale(1); }
+50% { opacity: 1; transform: scale(1.05); }
+}
+@keyframes marquee {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+@keyframes rotateSlow {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+@keyframes rotateBadge {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+/* SCROLL REVEAL */
+.reveal {
+opacity: 0; transform: translateY(40px);
+transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+nav { padding: 20px 24px; }
+.nav-links { display: none; }
+.hero { grid-template-columns: 1fr; }
+.hero-visual { display: none; }
+.hero-content { padding: 140px 24px 80px; }
+.features, .tech { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+.products { padding: 80px 24px; }
+.products-grid { grid-template-columns: 1fr; gap: 2px; }
+.testimonials { padding: 80px 24px; }
+.testimonials-grid { grid-template-columns: 1fr; }
+.sustainability { padding: 80px 24px; }
+.impact-grid { grid-template-columns: 1fr 1fr; }
+.cta-band { padding: 60px 24px; grid-template-columns: 1fr; }
+footer { padding: 60px 24px 32px; }
+.footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+.marquee-section { display: none; }
+body { cursor: auto; }
+.cursor, .cursor-ring { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- Custom Cursor -->
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- NAVIGATION -->
+
+<nav>
+  <a href="#" class="nav-logo">VAULT<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#sustainability">Sustainability</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <button class="nav-cta">Shop Now</button>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Engineered for Life</div>
+    <h1 class="hero-title">
+      Built to<br>
+      <em>Last</em><br>
+      <span class="accent">Forever.</span>
+    </h1>
+    <p class="hero-desc">
+      Premium 18/8 surgical stainless steel, aerospace-grade thermal engineering, and a design philosophy rooted in permanence. One bottle. Every adventure.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary">Explore Collection</button>
+      <a href="#technology" class="btn-secondary">
+        <span class="arrow"></span>
+        Our Technology
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="bottle-scene">
+      <div class="bottle-glow"></div>
+      <!-- SVG Bottle Illustration -->
+      <svg class="bottle-svg" viewBox="0 0 200 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bottleGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3a3f4a"/>
+            <stop offset="25%" stop-color="#7a8291"/>
+            <stop offset="50%" stop-color="#dde2e9"/>
+            <stop offset="75%" stop-color="#7a8291"/>
+            <stop offset="100%" stop-color="#3a3f4a"/>
+          </linearGradient>
+          <linearGradient id="capGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#1a1c20"/>
+            <stop offset="40%" stop-color="#3a3f4a"/>
+            <stop offset="60%" stop-color="#555c6a"/>
+            <stop offset="100%" stop-color="#1a1c20"/>
+          </linearGradient>
+          <linearGradient id="goldAccent" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#8a6530"/>
+            <stop offset="50%" stop-color="#c9a96e"/>
+            <stop offset="100%" stop-color="#8a6530"/>
+          </linearGradient>
+          <linearGradient id="shineGrad" x1="0.2" y1="0" x2="0.3" y2="1">
+            <stop offset="0%" stop-color="white" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="white" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="bottleClip">
+            <path d="M70 100 C50 100 30 120 28 140 L18 480 C16 500 30 520 50 520 L150 520 C170 520 184 500 182 480 L172 140 C170 120 150 100 130 100 Z"/>
+          </clipPath>
+        </defs>
+        <!-- Cap -->
+        <rect x="72" y="20" width="56" height="16" rx="8" fill="url(#capGrad)"/>
+        <rect x="68" y="36" width="64" height="8" rx="3" fill="url(#capGrad)"/>
+        <!-- Neck -->
+        <path d="M76 44 L72 100 L128 100 L124 44 Z" fill="url(#bottleGrad)"/>
+        <path d="M76 44 L72 100" stroke="url(#goldAccent)" stroke-width="1" opacity="0.6"/>
+        <path d="M124 44 L128 100" stroke="url(#goldAccent)" stroke-width="1" opacity="0.6"/>
+        <!-- Body -->
+        <path d="M70 100 C50 100 30 120 28 140 L18 480 C16 500 30 520 50 520 L150 520 C170 520 184 500 182 480 L172 140 C170 120 150 100 130 100 Z" fill="url(#bottleGrad)"/>
+        <!-- Highlight -->
+        <path d="M80 110 C75 115 72 125 71 145 L65 460 C68 120 76 108 85 102 Z" fill="url(#shineGrad)"/>
+        <!-- Gold ring top -->
+        <rect x="28" y="138" width="144" height="4" fill="url(#goldAccent)" opacity="0.9"/>
+        <!-- Gold ring bottom -->
+        <rect x="18" y="490" width="164" height="4" fill="url(#goldAccent)" opacity="0.9"/>
+        <!-- Logo text area -->
+        <rect x="55" y="230" width="90" height="100" rx="2" fill="rgba(255,255,255,0.03)" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+        <text x="100" y="268" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" fill="#dde2e9" font-weight="300" letter-spacing="6">VAULT</text>
+        <text x="100" y="298" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#c9a96e" font-weight="500" letter-spacing="4">PREMIUM</text>
+        <!-- Side highlights -->
+        <path d="M28 200 L18 480" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <path d="M172 200 L182 480" stroke="rgba(0,0,0,0.4)" stroke-width="1"/>
+        <!-- Bottom -->
+        <ellipse cx="100" cy="520" rx="50" ry="8" fill="#1a1c20"/>
+      </svg>
+
+```
+  <!-- Stats floating beside bottle -->
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-number">48h</span>
+      <span class="stat-label">Cold Retention</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">24h</span>
+      <span class="stat-label">Heat Retention</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">18/8</span>
+      <span class="stat-label">Steel Grade</span>
+    </div>
+  </div>
+
+  <div class="badge">
+    <span class="badge-text">LIFETIME<br>WARRANTY<br>◆</span>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Premium Stainless Steel</div>
+    <div class="marquee-item">Double Wall Vacuum</div>
+    <div class="marquee-item">BPA Free</div>
+    <div class="marquee-item">Lifetime Guarantee</div>
+    <div class="marquee-item">18/8 Food Grade</div>
+    <div class="marquee-item">48h Cold Retention</div>
+    <div class="marquee-item">Sweat-Proof Design</div>
+    <div class="marquee-item">Premium Stainless Steel</div>
+    <div class="marquee-item">Double Wall Vacuum</div>
+    <div class="marquee-item">BPA Free</div>
+    <div class="marquee-item">Lifetime Guarantee</div>
+    <div class="marquee-item">18/8 Food Grade</div>
+    <div class="marquee-item">48h Cold Retention</div>
+    <div class="marquee-item">Sweat-Proof Design</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+
+<section class="features" id="technology">
+  <div class="features-text reveal">
+    <div class="section-tag">Why Vault</div>
+    <h2 class="section-title">Crafted with<br><em>precision</em> at<br>every layer</h2>
+    <p class="section-body">
+      Every Vault bottle is engineered from the inside out — from the surgical-grade steel interior to the matte powder coat finish. No compromises, no shortcuts.
+    </p>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">⟡</div>
+        <div class="feature-copy">
+          <h4>Double-Wall Vacuum Insulation</h4>
+          <p>A true vacuum between steel walls eliminates thermal transfer. Cold stays cold for 48 hours. Hot stays hot for 24 hours.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">◎</div>
+        <div class="feature-copy">
+          <h4>18/8 Surgical Steel Interior</h4>
+          <p>The same grade used in medical instruments. Completely non-reactive — your water tastes like water, nothing else.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">◈</div>
+        <div class="feature-copy">
+          <h4>Leak-Proof Tri-Seal Cap</h4>
+          <p>Three independent silicone seals ensure zero leaks even when fully inverted. Designed for life in motion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-visual reveal">
+    <!-- Cross section diagram SVG -->
+    <svg viewBox="0 0 300 520" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:280px; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.6));">
+      <defs>
+        <linearGradient id="outerWall" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#3a3f4a"/>
+          <stop offset="50%" stop-color="#9aa0ad"/>
+          <stop offset="100%" stop-color="#3a3f4a"/>
+        </linearGradient>
+        <linearGradient id="innerWall" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#5a6070"/>
+          <stop offset="50%" stop-color="#c0c8d5"/>
+          <stop offset="100%" stop-color="#5a6070"/>
+        </linearGradient>
+      </defs>
+      <!-- Outer wall left -->
+      <rect x="30" y="80" width="20" height="380" rx="10" fill="url(#outerWall)"/>
+      <!-- Outer wall right -->
+      <rect x="250" y="80" width="20" height="380" rx="10" fill="url(#outerWall)"/>
+      <!-- Vacuum gap (dark) -->
+      <rect x="50" y="80" width="22" height="380" fill="#0d0e10" opacity="0.9"/>
+      <rect x="228" y="80" width="22" height="380" fill="#0d0e10" opacity="0.9"/>
+      <!-- Vacuum label -->
+      <line x1="30" y1="290" x2="72" y2="290" stroke="rgba(201,169,110,0.5)" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="14" y="294" font-family="Barlow Condensed" font-size="9" fill="#c9a96e" letter-spacing="1" transform="rotate(-90, 14, 294)">VACUUM</text>
+      <!-- Inner wall left -->
+      <rect x="72" y="80" width="16" height="380" rx="8" fill="url(#innerWall)"/>
+      <!-- Inner wall right -->
+      <rect x="212" y="80" width="16" height="380" rx="8" fill="url(#innerWall)"/>
+      <!-- Interior space -->
+      <rect x="88" y="80" width="124" height="380" fill="#0f1115" rx="4"/>
+      <!-- Water level gradient -->
+      <rect x="88" y="200" width="124" height="260" fill="url(#waterFill)" rx="0 0 4 4"/>
+      <defs>
+        <linearGradient id="waterFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a3a4a" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#0d2030" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <!-- Ice cubes hint -->
+      <rect x="110" y="350" width="20" height="20" rx="4" fill="rgba(200,230,255,0.15)" stroke="rgba(200,230,255,0.2)" stroke-width="1"/>
+      <rect x="140" y="360" width="16" height="16" rx="3" fill="rgba(200,230,255,0.1)" stroke="rgba(200,230,255,0.15)" stroke-width="1"/>
+      <rect x="165" y="345" width="18" height="18" rx="3" fill="rgba(200,230,255,0.12)" stroke="rgba(200,230,255,0.18)" stroke-width="1"/>
+      <!-- Cap area -->
+      <rect x="72" y="40" width="156" height="40" rx="8" fill="#2a2d33"/>
+      <rect x="82" y="48" width="136" height="24" rx="6" fill="#3a3f4a"/>
+      <!-- Gold accent lines -->
+      <line x1="30" y1="80" x2="270" y2="80" stroke="url(#goldAccent)" stroke-width="2"/>
+      <line x1="30" y1="460" x2="270" y2="460" stroke="url(#goldAccent)" stroke-width="2"/>
+      <!-- Annotation lines -->
+      <line x1="270" y1="140" x2="290" y2="140" stroke="rgba(201,169,110,0.4)" stroke-width="1"/>
+      <text x="294" y="144" font-family="Barlow Condensed" font-size="9" fill="#c9a96e" letter-spacing="1">OUTER</text>
+      <line x1="270" y1="200" x2="290" y2="200" stroke="rgba(201,169,110,0.4)" stroke-width="1"/>
+      <text x="294" y="204" font-family="Barlow Condensed" font-size="9" fill="#c9a96e" letter-spacing="1">VACUUM</text>
+      <line x1="270" y1="260" x2="290" y2="260" stroke="rgba(201,169,110,0.4)" stroke-width="1"/>
+      <text x="294" y="264" font-family="Barlow Condensed" font-size="9" fill="#c9a96e" letter-spacing="1">INNER</text>
+    </svg>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products" id="collection">
+  <div class="products-header reveal">
+    <div>
+      <div class="section-tag">The Collection</div>
+      <h2 class="section-title">Find <em>your</em> Vault</h2>
+    </div>
+    <a href="#" class="btn-secondary" style="margin-bottom: 8px;">
+      <span class="arrow"></span>
+      View All
+    </a>
+  </div>
+
+  <div class="products-grid reveal">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-img-wrap" style="background: linear-gradient(135deg, #1a1c20, #2a2d33);">
+        <svg viewBox="0 0 100 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="p1g" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2a2d33"/>
+              <stop offset="40%" stop-color="#7a8291"/>
+              <stop offset="60%" stop-color="#9aa0ad"/>
+              <stop offset="100%" stop-color="#2a2d33"/>
+            </linearGradient>
+          </defs>
+          <rect x="35" y="8" width="30" height="8" rx="4" fill="url(#p1g)"/>
+          <path d="M36 16 L34 42 L66 42 L64 16 Z" fill="url(#p1g)"/>
+          <path d="M33 42 C23 44 15 52 14 62 L8 200 C7 212 15 222 27 222 L73 222 C85 222 93 212 92 200 L86 62 C85 52 77 44 67 42 Z" fill="url(#p1g)"/>
+          <rect x="14" y="60" width="72" height="2" fill="#c9a96e" opacity="0.8"/>
+          <rect x="8" y="208" width="84" height="2" fill="#c9a96e" opacity="0.8"/>
+          <text x="50" y="138" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#dde2e9" letter-spacing="3">VAULT</text>
+        </svg>
+        <div class="product-badge-tag">Bestseller</div>
+        <div class="product-overlay">
+          <button class="product-overlay-btn">Quick Add — $89</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">The Classic 32oz</div>
+        <div class="product-sub">Double Wall · Wide Mouth</div>
+        <div class="color-dots">
+          <div class="color-dot" style="background:#3a3f4a"></div>
+          <div class="color-dot" style="background:#8b7355"></div>
+          <div class="color-dot" style="background:#2d4a3e"></div>
+          <div class="color-dot" style="background:#4a2d3e"></div>
+        </div>
+        <div class="product-footer">
+          <span class="product-price">$89</span>
+          <div class="product-rating">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+```
+<!-- Product 2 -->
+<div class="product-card">
+  <div class="product-img-wrap" style="background: linear-gradient(135deg, #1e1a14, #2d2618);">
+    <svg viewBox="0 0 100 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="p2g" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#3d2e16"/>
+          <stop offset="40%" stop-color="#9a7848"/>
+          <stop offset="60%" stop-color="#c9a96e"/>
+          <stop offset="100%" stop-color="#3d2e16"/>
+        </linearGradient>
+      </defs>
+      <rect x="38" y="8" width="24" height="7" rx="3" fill="url(#p2g)"/>
+      <path d="M38 15 L36 40 L64 40 L62 15 Z" fill="url(#p2g)"/>
+      <path d="M35 40 C27 42 20 49 19 57 L12 194 C11 204 18 212 28 212 L72 212 C82 212 89 204 88 194 L81 57 C80 49 73 42 65 40 Z" fill="url(#p2g)"/>
+      <rect x="19" y="55" width="62" height="2" fill="#f0deb8" opacity="0.7"/>
+      <rect x="12" y="200" width="76" height="2" fill="#f0deb8" opacity="0.7"/>
+      <text x="50" y="128" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8" fill="#f0ede8" letter-spacing="3">VAULT</text>
+    </svg>
+    <div class="product-badge-tag" style="background:var(--obsidian); color:var(--gold);">Limited</div>
+    <div class="product-overlay">
+      <button class="product-overlay-btn">Quick Add — $119</button>
+    </div>
+  </div>
+  <div class="product-info">
+    <div class="product-name">The Luxe 24oz</div>
+    <div class="product-sub">Brushed Gold · Slim Grip</div>
+    <div class="color-dots">
+      <div class="color-dot" style="background:#c9a96e"></div>
+      <div class="color-dot" style="background:#9a7848"></div>
+      <div class="color-dot" style="background:#c0c8d5"></div>
+    </div>
+    <div class="product-footer">
+      <span class="product-price">$119</span>
+      <div class="product-rating">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<!-- Product 3 -->
+<div class="product-card">
+  <div class="product-img-wrap" style="background: linear-gradient(135deg, #131618, #1d2228);">
+    <svg viewBox="0 0 100 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="p3g" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#131618"/>
+          <stop offset="40%" stop-color="#4a505c"/>
+          <stop offset="60%" stop-color="#6a7080"/>
+          <stop offset="100%" stop-color="#131618"/>
+        </linearGradient>
+      </defs>
+      <rect x="36" y="6" width="28" height="10" rx="5" fill="url(#p3g)"/>
+      <path d="M36 16 L32 44 L68 44 L64 16 Z" fill="url(#p3g)"/>
+      <path d="M30 44 C20 46 12 56 11 68 L5 210 C4 222 14 232 26 232 L74 232 C86 232 96 222 95 210 L89 68 C88 56 80 46 70 44 Z" fill="url(#p3g)"/>
+      <rect x="11" y="66" width="78" height="2" fill="#c9a96e" opacity="0.7"/>
+      <rect x="5" y="218" width="90" height="2" fill="#c9a96e" opacity="0.7"/>
+      <text x="50" y="142" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#dde2e9" letter-spacing="3">VAULT</text>
+      <text x="50" y="158" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="5" fill="#c9a96e" letter-spacing="3">40 OZ</text>
+    </svg>
+    <div class="product-badge-tag" style="background:#c0392b; color:white;">New</div>
+    <div class="product-overlay">
+      <button class="product-overlay-btn">Quick Add — $99</button>
+    </div>
+  </div>
+  <div class="product-info">
+    <div class="product-name">The Summit 40oz</div>
+    <div class="product-sub">Matte Black · Sport Cap</div>
+    <div class="color-dots">
+      <div class="color-dot" style="background:#1a1c20"></div>
+      <div class="color-dot" style="background:#2d4a3e"></div>
+      <div class="color-dot" style="background:#3a3f4a"></div>
+    </div>
+    <div class="product-footer">
+      <span class="product-price">$99</span>
+      <div class="product-rating">★★★★☆</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- TECHNOLOGY RING -->
+
+<section class="tech" id="tech-detail">
+  <div class="reveal">
+    <div class="section-tag">Thermal Science</div>
+    <h2 class="section-title">Zero<br>compromise<br><em>temperature</em></h2>
+    <p class="section-body">
+      Our proprietary ThermaCore™ technology creates a vacuum so complete, less than 0.001% of atmospheric pressure remains inside the walls. Heat has nowhere to go.
+    </p>
+    <div class="tech-specs">
+      <div class="tech-spec">
+        <div class="spec-value">48h</div>
+        <div class="spec-key">Cold Retention</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-value">24h</div>
+        <div class="spec-key">Heat Retention</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-value">0°</div>
+        <div class="spec-key">Sweat-Proof</div>
+      </div>
+      <div class="tech-spec">
+        <div class="spec-value">2mm</div>
+        <div class="spec-key">Wall Thickness</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tech-visual reveal">
+    <div class="tech-ring">
+      <div class="tech-ring-dot"></div>
+      <div class="tech-center">
+        <div class="tech-center-num">−273°</div>
+        <div class="tech-center-label">Vacuum Core Temp</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials" id="reviews">
+  <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+    <div class="section-tag" style="justify-content: center;">Real Reviews</div>
+    <h2 class="section-title">What people<br><em>actually</em> say</h2>
+  </div>
+
+  <div class="testimonials-grid reveal">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">Ice lasted three days on a summer camping trip. Three days. I've used every insulated bottle on the market and nothing comes close to this performance.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">MR</div>
+        <div class="author-info">
+          <div class="name">Marcus R.</div>
+          <div class="detail">Verified Buyer · Classic 32oz</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">The weight and feel is unlike anything else. You can tell it's genuinely premium the moment it's in your hand. The gold edition is stunning — gets compliments everywhere.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">SL</div>
+        <div class="author-info">
+          <div class="name">Sophie L.</div>
+          <div class="detail">Verified Buyer · Luxe 24oz Gold</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">Bought this after my third cheap bottle leaked on my laptop. Two years later, zero issues. The lid seal is extraordinary. Best investment I've made for my daily routine.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">JK</div>
+        <div class="author-info">
+          <div class="name">James K.</div>
+          <div class="detail">Verified Buyer · Summit 40oz</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+
+<section class="sustainability" id="sustainability">
+  <div class="sustainability-bg"></div>
+  <div style="position: relative;">
+    <div class="section-tag reveal">Our Commitment</div>
+    <h2 class="section-title reveal">One bottle.<br><em>One lifetime.</em><br>One planet.</h2>
+    <p class="section-body reveal" style="max-width: 560px;">
+      The most sustainable bottle is the one you never have to replace. Each Vault lasts a lifetime by design — no BPA, no plastic waste, no compromises.
+    </p>
+    <div class="impact-grid reveal">
+      <div class="impact-item">
+        <div class="impact-num">1,460</div>
+        <div class="impact-label">Plastic bottles avoided<br>per year per owner</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">100%</div>
+        <div class="impact-label">Recyclable at<br>end of life</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">0</div>
+        <div class="impact-label">BPA, phthalates,<br>or toxins</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-num">∞</div>
+        <div class="impact-label">Lifetime warranty<br>on every bottle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+
+<section class="cta-band">
+  <div>
+    <h2 class="cta-title">Ready to own the <em>last bottle</em><br>you'll ever need?</h2>
+  </div>
+  <button class="btn-dark">Shop the Collection</button>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="brand-name">VAULT<span>.</span></div>
+      <p>Premium stainless steel, engineered for life. Built to outlast everything, designed to inspire every day.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="#">All Bottles</a></li>
+        <li><a href="#">Classic Series</a></li>
+        <li><a href="#">Luxe Series</a></li>
+        <li><a href="#">Summit Series</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">Warranty</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Care Instructions</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Wholesale</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Vault Premium. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#">IG</a>
+      <a href="#">TK</a>
+      <a href="#">PT</a>
+      <a href="#">YT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('button, a, .product-card, .feature-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '20px';
+      cursor.style.height = '20px';
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Color dot selection
+  document.querySelectorAll('.color-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      dot.parentElement.querySelectorAll('.color-dot').forEach(d => d.style.outline = 'none');
+      dot.style.outline = '2px solid #c9a96e';
+      dot.style.outlineOffset = '2px';
+    });
+  });
+</script>
+
+</body>
+</html>
